@@ -97,18 +97,21 @@ const install = () => {
       </div>
     </div>
 
-    <div v-if="state === 'desktop'" class="desktop">
-      <header class="taskbar">Zenitta OS | User: {{ user }}</header>
-      <main class="icons">
-        <div class="icon">Terminal</div>
-        <div class="icon">Files</div>
-      </main>
+    <div v-if="state === 'desktop'" class="desktop-wrapper">
+      <dwm :currentUser="user" />
     </div>
   </div>
 </template>
 
 
 <style>
+.desktop-wrapper {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  /* ここにOSの壁紙をセット */
+  background: radial-gradient(circle at bottom, #1e1e1e 0%, #000 100%);
+}
 body {
   margin: 0;
   background: #000;

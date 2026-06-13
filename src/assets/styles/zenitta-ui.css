@@ -1,0 +1,128 @@
+/* * Zenitta OS UI System (zenitta-ui.css)
+ * 現代的なOS体験を構築するためのコアスタイル
+ */
+
+:root {
+  /* グローバルテーマ変数 */
+  --os-bg: rgba(255, 255, 255, 0.75);
+  --os-border: 1px solid rgba(255, 255, 255, 0.2);
+  --os-accent: #0f0;
+  --os-radius: 12px;
+  --os-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --os-font: 'Segoe UI', sans-serif, 'Monospace';
+}
+
+/* 1. Window System */
+.window {
+  position: absolute;
+  background: var(--os-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--os-radius);
+  border: var(--os-border);
+  box-shadow: var(--os-shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+  min-width: 200px;
+  min-height: 150px;
+}
+
+.window:focus-within {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--os-accent);
+}
+
+/* 2. Titlebar System */
+.titlebar {
+  height: 36px;
+  background: rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  cursor: grab;
+  user-select: none;
+  font-family: var(--os-font);
+  font-size: 0.85rem;
+  color: #333;
+  border-bottom: var(--os-border);
+}
+
+/* 3. Window Content */
+.window-content {
+  padding: 16px;
+  flex: 1;
+  overflow: auto;
+  color: #000;
+}
+
+/* 4. OS Controls (Buttons) */
+.os-btn {
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  background: #eee;
+  font-family: var(--os-font);
+  cursor: pointer;
+}
+
+.os-btn:hover {
+  background: #ddd;
+}
+
+.os-context-menu {
+  position: fixed;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  z-index: 10000;
+  padding: 5px 0;
+  width: 180px;
+}
+
+.os-menu-item {
+  padding: 8px 16px;
+  cursor: pointer;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 0.85rem;
+  transition: background 0.1s;
+}
+
+.os-menu-item:hover {
+  background: var(--os-accent);
+  color: #000;
+}
+
+/* タスクバー: Windows 11スタイル */
+.taskbar {
+  position: fixed;
+  bottom: 20px; /* 画面下部から浮かす */
+  left: 50%;
+  transform: translateX(-50%);
+  height: 52px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  gap: 8px;
+  z-index: 10000;
+}
+
+/* アイコンのホバーエフェクト */
+.taskbar-item {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.taskbar-item:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
