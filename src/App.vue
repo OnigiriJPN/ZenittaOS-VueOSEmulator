@@ -118,11 +118,19 @@ button {
 button:hover {
   background: #0f0;
   color: #000;
-  opacity: 0.8;
+  opacity: 0.6;
+}
+button:disabled {
+  background: #333;
+  border-color: #555;
+  color: #555;
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 /* 押した時の反応もOSっぽく */
 button:active {
   background: #0f0;
   color: #000;
+  opacity: 1;
 }
 </style>
