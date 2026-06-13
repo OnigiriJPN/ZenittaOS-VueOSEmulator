@@ -74,7 +74,7 @@ const install = () => {
           同意する<br><button :disabled="!agreed" @click="step++">次へ</button>
         </div>
         <div v-if="step === 3">
-          <h2 style="color: white;">ユーザー名</h2><input v-model="user" placeholder="Name"> <button @click="step++"
+          <h2 style="color: white;">ユーザー名</h2><input v-model="user" type="text" placeholder="Name"> <button @click="step++"
             :disabled="!user">次へ</button>
         </div>
         <div v-if="step === 4">
@@ -82,7 +82,7 @@ const install = () => {
             :disabled="!pin" @click="step++">次へ</button>
         </div>
         <div v-if="step === 5">
-          <h2 style="color: white;">プロダクトキー</h2><input placeholder="XXXX-XXXX"> <button @click="step++">認証</button>
+          <h2 style="color: white;">プロダクトキー</h2><input type="text" placeholder="XXXX-XXXX"> <button @click="step++">認証</button>
         </div>
         <div v-if="step === 6">
           <h2 style="color: white;">フォーマット</h2><button @click="install" class="danger">System/ を初期化</button>
