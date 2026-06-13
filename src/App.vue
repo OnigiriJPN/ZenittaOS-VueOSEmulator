@@ -64,14 +64,36 @@ const install = () => {
     <div v-if="state === 'setup'" class="screen setup-container">
       <div class="card">
         <h2 class="neon-text">Step {{ step }} / 7</h2>
-        
-        <div v-if="step === 1"><h1 style="color: white;">Welcome to Zenitta</h1><button @click="step++">はじめる</button></div>
-        <div v-if="step === 2"><h2 style="color: white;">利用規約</h2><div class="terms">このオペレーティングシステムはMITライセンスです。改造は許可します。</div><input type="checkbox" v-model="agreed"> 同意する<br><button :disabled="!agreed" @click="step++">次へ</button></div>
-        <div v-if="step === 3"><h2 style="color: white;">ユーザー名</h2><input v-model="user" placeholder="Name"> <button @click="step++" :disabled="!user">次へ</button></div>
-        <div v-if="step === 4"><h2 style="color: white;">パスワード</h2><input type="password" v-model="pin" placeholder="PIN(4桁)"> <button :disabled="!pin" @click="step++">次へ</button></div>
-        <div v-if="step === 5"><h2 style="color: white;">プロダクトキー</h2><input placeholder="XXXX-XXXX"> <button @click="step++" >認証</button></div>
-        <div v-if="step === 6"><h2 style="color: white;">フォーマット</h2><button @click="install" class="danger">System/ を初期化</button></div>
-        <div v-if="step === 7"><h2 style="color: white;">インストール中...</h2><div class="bar"><div :style="{width: progress+'%'}"></div></div><p>{{ status }}</p></div>
+
+        <div v-if="step === 1">
+          <h1 style="color: white;">Welcome to Zenitta</h1><button @click="step++">はじめる</button>
+        </div>
+        <div v-if="step === 2">
+          <h2 style="color: white;">利用規約</h2>
+          <div class="terms">このオペレーティングシステムはMITライセンスです。改造は許可します。</div><input type="checkbox" v-model="agreed">
+          同意する<br><button :disabled="!agreed" @click="step++">次へ</button>
+        </div>
+        <div v-if="step === 3">
+          <h2 style="color: white;">ユーザー名</h2><input v-model="user" placeholder="Name"> <button @click="step++"
+            :disabled="!user">次へ</button>
+        </div>
+        <div v-if="step === 4">
+          <h2 style="color: white;">パスワード</h2><input type="password" v-model="pin" placeholder="PIN(4桁)"> <button
+            :disabled="!pin" @click="step++">次へ</button>
+        </div>
+        <div v-if="step === 5">
+          <h2 style="color: white;">プロダクトキー</h2><input placeholder="XXXX-XXXX"> <button @click="step++">認証</button>
+        </div>
+        <div v-if="step === 6">
+          <h2 style="color: white;">フォーマット</h2><button @click="install" class="danger">System/ を初期化</button>
+        </div>
+        <div v-if="step === 7">
+          <h2 style="color: white;">インストール中...</h2>
+          <div class="bar">
+            <div :style="{ width: progress + '%' }"></div>
+          </div>
+          <p>{{ status }}</p>
+        </div>
       </div>
     </div>
 
@@ -87,39 +109,110 @@ const install = () => {
 
 
 <style>
-body { margin: 0; background: #000; color: #0f0; font-family: 'Courier New', monospace; }
-.screen { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-.boot-logo { width: 300px; margin-bottom: 20px; }
-.blink { animation: blink 1s infinite; }
-@keyframes blink { 50% { opacity: 0; } }
-.card { border: 1px solid #f0f; padding: 40px; background: #111; text-align: center; }
-.neon-text { color: #f0f; text-shadow: 0 0 10px #f0f; }
-.bar { width: 300px; height: 10px; border: 1px solid #0f0; }
-.bar div { height: 100%; background: #0f0; transition: width 0.5s; }
-.danger { background: #800; color: white; }
-.desktop { height: 100vh; display: flex; flex-direction: column; }
-.taskbar { background: #222; padding: 10px; }
-.icons { display: flex; gap: 20px; padding: 20px; }
-.icon { border: 1px solid #fff; padding: 20px; cursor: pointer; }
+body {
+  margin: 0;
+  background: #000;
+  color: #0f0;
+  font-family: 'Courier New', monospace;
+}
+
+.screen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.boot-logo {
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+.blink {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.card {
+  border: 1px solid #f0f;
+  padding: 40px;
+  background: #111;
+  text-align: center;
+}
+
+.neon-text {
+  color: #f0f;
+  text-shadow: 0 0 10px #f0f;
+}
+
+.bar {
+  width: 300px;
+  height: 10px;
+  border: 1px solid #0f0;
+}
+
+.bar div {
+  height: 100%;
+  background: #0f0;
+  transition: width 0.5s;
+}
+
+.danger {
+  background: #800;
+  color: white;
+}
+
+.desktop {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.taskbar {
+  background: #222;
+  padding: 10px;
+}
+
+.icons {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.icon {
+  border: 1px solid #fff;
+  padding: 20px;
+  cursor: pointer;
+}
+
 button {
   /* ブラウザ標準の見た目を強制リセット */
   appearance: none;
   -webkit-appearance: none;
-  
+
   /* Zenitta OSのスタイルを適用 */
   background: #111;
-  border: 1px solid #0f0; /* ネオンカラーの枠 */
+  border: 1px solid #0f0;
+  /* ネオンカラーの枠 */
   color: #0f0;
   padding: 10px 20px;
   cursor: pointer;
   font-family: 'Courier New', monospace;
   transition: all 0.2s;
 }
+
 button:hover {
   background: #0f0;
   color: #000;
   opacity: 0.6;
 }
+
 button:disabled {
   background: #333;
   border-color: #555;
@@ -127,10 +220,40 @@ button:disabled {
   cursor: not-allowed;
   opacity: 0.5;
 }
+
 /* 押した時の反応もOSっぽく */
 button:active {
   background: #0f0;
   color: #000;
   opacity: 1;
+}
+
+/* 入力欄（テキストボックス） */
+input[type="text"],
+input[type="password"] {
+  background: #000;
+  border: 2px solid #555;
+  color: #0f0;
+  /* レトロな緑の文字 */
+  padding: 10px;
+  font-family: 'Courier New', monospace;
+  outline: none;
+  transition: border 0.3s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border: 2px solid #0f0;
+  /* フォーカス時に縁が緑に光る */
+}
+
+/* ラベルの調整 */
+label {
+    color: #aaa;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    display: block;
 }
 </style>
