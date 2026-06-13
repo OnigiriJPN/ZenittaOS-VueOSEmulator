@@ -215,7 +215,11 @@ button:hover {
   color: #000;
   opacity: 0.6;
 }
-
+button:disabled:active{
+  background: rgb(2, 196, 2);
+  color: #000;
+  opacity: 1;
+}
 button:disabled {
   background: #333;
   border-color: #555;
