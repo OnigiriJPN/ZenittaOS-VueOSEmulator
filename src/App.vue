@@ -101,4 +101,24 @@ body { margin: 0; background: #000; color: #0f0; font-family: 'Courier New', mon
 .taskbar { background: #222; padding: 10px; }
 .icons { display: flex; gap: 20px; padding: 20px; }
 .icon { border: 1px solid #fff; padding: 20px; cursor: pointer; }
+button {
+  /* ブラウザ標準の見た目を強制リセット */
+  appearance: none;
+  -webkit-appearance: none;
+  
+  /* Zenitta OSのスタイルを適用 */
+  background: #111;
+  border: 1px solid #0f0; /* ネオンカラーの枠 */
+  color: #0f0;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-family: 'Courier New', monospace;
+  transition: all 0.2s;
+}
+
+/* 押した時の反応もOSっぽく */
+button:active {
+  background: #0f0;
+  color: #000;
+}
 </style>
