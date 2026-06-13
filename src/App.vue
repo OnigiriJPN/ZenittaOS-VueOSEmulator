@@ -115,7 +115,11 @@ button {
   font-family: 'Courier New', monospace;
   transition: all 0.2s;
 }
-
+button:hover {
+  background: #0f0;
+  color: #000;
+  opacity: 0.8;
+}
 /* 押した時の反応もOSっぽく */
 button:active {
   background: #0f0;
